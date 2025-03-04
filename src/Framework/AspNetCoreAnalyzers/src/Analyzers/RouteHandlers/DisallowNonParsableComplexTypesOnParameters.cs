@@ -130,7 +130,7 @@ public partial class RouteHandlerAnalyzer : DiagnosticAnalyzer
             // If it is nullable, unwrap it.
             if (parameterTypeSymbol!.ConstructedFrom.SpecialType == SpecialType.System_Nullable_T)
             {
-                parameterTypeSymbol = parameterTypeSymbol.TypeArguments[0] as INamedTypeSymbol;
+                parameterTypeSymbol = parameterTypeSymbol.TypeArguments.Length > 0 ? parameterTypeSymbol.TypeArguments[0] as INamedTypeSymbol : null;
             }
 
             return parameterTypeSymbol;
